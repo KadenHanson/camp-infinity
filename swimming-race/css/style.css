@@ -45,6 +45,8 @@
   width: 100px;
   position: relative;
   transform: scale(-1, 1);
+  transition: left 1s;
+  left: 0;
 }
 
 .scoreboard h2 {
