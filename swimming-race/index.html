@@ -7,80 +7,182 @@
   <title>Camp Infinity - Swimming Race</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script type="text/javascript" src="js/jquery-3.7.0.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" src="js/jquery-3.7.0.min.js"></script> -->
 </head>
 
 <body>
-  <div class="nav">
-    <img src="images/logo-filled.png" class="logo" />
-  </div>
-
-  <div class="pool">
-    <div class="lanes">
-      <div class="lane" style="border-top: none;">
-        <div class="lane-number">
-          1<br>
-          QA Team<br>
-          <input type="number" min="0" max="50" id="1" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-1" class="swimmer" />
-        </div>
-      </div>
-      <div class="lane">
-        <div class="lane-number">
-          2<br>
-          CS Team<br>
-          <input type="number" min="0" max="80" id="2" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-2" class="swimmer" />
-        </div>
-      </div>
-      <div class="lane">
-        <div class="lane-number">
-          3<br>
-          Product Team<br>
-          <input type="number" min="0" max="4" id="3" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-3" class="swimmer" />
-        </div>
-      </div>
-      <div class="lane">
-        <div class="lane-number">
-          4<br>
-          PS Team<br>
-          <input type="number" min="0" max="20" id="4" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-4" class="swimmer" />
-        </div>
-      </div>
-      <div class="lane">
-        <div class="lane-number">
-          5<br>
-          L&D Team<br>
-          <input type="number" min="0" max="2" id="5" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-5" class="swimmer" />
-        </div>
-      </div>
-      <div class="lane">
-        <div class="lane-number">
-          6<br>
-          Dev Team<br>
-          <input type="number" min="0" max="120" id="6" />
-        </div>
-        <div class="swim-lane">
-          <img src="images/swimmer.png" id="swimmer-6" class="swimmer" />
-        </div>
-      </div>
+    <div class="nav">
+        <img src="./images/logo-filled.png" class="logo" />
     </div>
+
+    <div class="pool">
+        <div class="lanes">
+            <div class="lane" style="border-top: none;">
+                <div class="lane-number">
+                    1<br />
+                    QA Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-1" class="swimmer" />
+                </div>
+            </div>
+            <div class="lane">
+                <div class="lane-number">
+                    2<br />
+                    CS Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-2" class="swimmer" />
+                </div>
+            </div>
+            <div class="lane">
+                <div class="lane-number">
+                    3<br />
+                    Product Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-3" class="swimmer" />
+                </div>
+            </div>
+            <div class="lane">
+                <div class="lane-number">
+                    4<br />
+                    PS Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-4" class="swimmer" />
+                </div>
+            </div>
+            <div class="lane">
+                <div class="lane-number">
+                    5<br />
+                    L&D Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-5" class="swimmer" />
+                </div>
+            </div>
+            <div class="lane">
+                <div class="lane-number">
+                    6<br />
+                    Dev Team
+                </div>
+                <div class="swim-lane">
+                    <img src="./images/person-swimming-solid.svg" id="swimmer-6" class="swimmer" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scoreboard">
+      <h2>Scoreboard</h2>
+      <table>
+          <colgroup>
+              <col width="66%" />
+              <col width="17%" />
+              <col width="17%" />
+          </colgroup>
+          <thead>
+              <tr>
+                  <td>Team</td>
+                  <td>Goal</td>
+                  <td>Actual</td>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>QA Team</td>
+                  <td id="qaGoal"></td>
+                  <td id="qaActual"></td>
+              </tr>
+              <tr>
+                  <td>CS Team</td>
+                  <td id="csGoal"></td>
+                  <td id="csActual"></td>
+              </tr>
+              <tr>
+                  <td>Product Team</td>
+                  <td id="productGoal"></td>
+                  <td id="productActual"></td>
+              </tr>
+              <tr>
+                  <td>PS Team</td>
+                  <td id="psGoal"></td>
+                  <td id="psActual"></td>
+              </tr>
+              <tr>
+                  <td>L&D Team</td>
+                  <td id="ldGoal"></td>
+                  <td id="ldActual"></td>
+              </tr>
+              <tr>
+                  <td>Dev Team</td>
+                  <td id="devGoal"></td>
+                  <td id="devActual"></td>
+              </tr>
+          </tbody>
+      </table>
   </div>
 
-  <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+      const finishPercentage = 90;
+
+      const qaGoal = 50;
+      const csGoal = 150;
+      const productGoal = 8;
+      const psGoal = 40;
+      const ldGoal = 4;
+      const devGoal = 120;
+
+      let qaActual = 83;
+      let csActual = 101;
+      let productActual = 6;
+      let psActual = 36;
+      let ldActual = 3;
+      let devActual = 94;
+
+      function calculateDistance(goal, actual) {
+          if (actual >= goal) {
+              return finishPercentage + '%';
+          }
+          const goalPercentage = (actual / goal) * 100;
+          return ((goalPercentage * finishPercentage) / 100) + '%';
+      }
+
+      function moveSwimmers() {
+          $('#swimmer-1').css({ 'left': calculateDistance(qaGoal, qaActual) });
+          $('#swimmer-2').css({ 'left': calculateDistance(csGoal, csActual) });
+          $('#swimmer-3').css({ 'left': calculateDistance(productGoal, productActual) });
+          $('#swimmer-4').css({ 'left': calculateDistance(psGoal, psActual) });
+          $('#swimmer-5').css({ 'left': calculateDistance(ldGoal, ldActual) });
+          $('#swimmer-6').css({ 'left': calculateDistance(devGoal, devActual) });
+      }
+
+      function populateScoreboard() {
+          $('#qaGoal').html(qaGoal);
+          $('#csGoal').html(csGoal);
+          $('#productGoal').html(productGoal);
+          $('#psGoal').html(psGoal);
+          $('#ldGoal').html(ldGoal);
+          $('#devGoal').html(devGoal);
+
+          $('#qaActual').html(qaActual);
+          $('#csActual').html(csActual);
+          $('#productActual').html(productActual);
+          $('#psActual').html(psActual);
+          $('#ldActual').html(ldActual);
+          $('#devActual').html(devActual);
+      }
+
+      $(document).ready(function () {
+          moveSwimmers();
+          populateScoreboard();
+      });
+  </script>
 </body>
 
 </html>
