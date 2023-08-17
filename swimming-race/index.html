@@ -17,6 +17,9 @@
     <img src="./images/logo-filled.png" class="logo" />
   </div>
 
+  <div class="start-button">
+    <button onclick="startRace()">Let's race!</button>
+  </div>
   <div class="pool">
     <div class="lanes">
       <div class="lane" style="border-top: none;">
@@ -126,6 +129,15 @@
     </table>
   </div>
 
+  <div class="numbers">
+    <div id="0" class="hide">3</div>
+    <div id="1" class="hide">2</div>
+    <div id="2" class="hide">1</div>
+    <div id="3" class="hide">GO!</div>
+  </div>
+
+  <audio id="song" src="./images/rocky_song.mp3" preload="auto"></audio>
+
   <script type="text/javascript">
     const finishPercentage = 90;
 
@@ -176,11 +188,57 @@
       $('#devActual').html(devActual);
     }
 
-    $(document).ready(function () {
-      setTimeout(function () {
-        moveSwimmers();
-      }, 500);
-      populateScoreboard();
+    var racing = false;
+
+    function startRace() {
+      if (!racing) {
+        $('#song').trigger('play');
+        setTimeout(function() {
+          racing = true;
+          showCountdown();
+          setTimeout(function() {
+            moveSwimmers();
+            setTimeout(function() {
+              populateScoreboard();
+            }, 62000);
+          }, 4000);
+        }, 2000);
+        
+      } else {
+        $('#song').trigger('pause');
+      }
+    }
+
+    function showCountdown() {
+      $('.numbers').css('display', 'block');
+
+      showNumber(0);
+      showNumber(1);
+      showNumber(2);
+      showNumber(3);
+
+      setTimeout(function() {
+        $('.numbers').css('display', 'none');
+      }, 6000);
+    }
+
+    function showNumber(id) {
+      setTimeout(function() {
+        $('#' + id).toggleClass('hide');
+        setTimeout(function() {
+          $('#' + id).toggleClass('show');
+        }, 10);
+        setTimeout(() => {
+          $('#' + id).toggleClass('hide');
+          setTimeout(function() {
+            $('#' + id).toggleClass('show');
+          }, 10);
+        }, 1000);
+      }, (id * 1000));
+    }
+
+    $(document).ready(function() {
+      document.getElementById('song').volume = 0.1;
     });
   </script>
 </body>
