@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Lumberjack;
+  src: url('../fonts/Lumberjack.otf');
+}
+
 .nav {
   text-align: center;
 }
@@ -32,7 +37,7 @@
   justify-content: center;
   font-size: 23px;
   text-align: center;
-  font-family: Calibri;
+  font-family: Lumberjack;
   background-color: #e3e3e3;
 }
 
@@ -45,13 +50,25 @@
   width: 100px;
   position: relative;
   transform: scale(-1, 1);
-  transition: left 60s;
+  transition: left 60s ease-out;
   left: 0;
+}
+
+.winner {
+  transition: left 60s linear;
+}
+
+.second-1 {
+  transition: left 62s linear;
+}
+
+.second-2 {
+  transition: left 62s ease-in;
 }
 
 .scoreboard h2 {
   text-align: center;
-  font-family: Calibri;
+  font-family: Lumberjack;
 }
 
 .scoreboard table {
@@ -59,7 +76,7 @@
   border-collapse: collapse;
   border: 1px solid black;
   margin: auto;
-  font-family: Calibri;
+  font-family: Lumberjack;
   font-size: 23px;
 }
 
@@ -83,7 +100,7 @@
   width: 120px;
   padding: 10px;
   font-size: 23px;
-  font-family: Calibri;
+  font-family: Lumberjack;
   top: -20px;
   left: -5px;
   cursor: pointer;
@@ -96,6 +113,7 @@
   text-align: center;
   top: 0;
   display: none;
+  font-family: Lumberjack;
 }
 
 .numbers div {
@@ -114,4 +132,34 @@
 
 .numbers div.hide {
   display: none;
+}
+
+.celebrate {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  font-family: Lumberjack;
+  font-size: 100px;
+  top: 0;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  color: white;
+}
+
+.celebrate img {
+  position: relative;
+  width: 50%;
+}
+
+.celebrate.show {
+  display: block;
+}
+
+.celebrate div {
+  width: 35%;
+  text-align: center;
+  top: 45%;
+  position: absolute;
+  display: inline-block;
 }

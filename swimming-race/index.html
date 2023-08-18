@@ -28,7 +28,7 @@
           QA Team
         </div>
         <div class="swim-lane">
-          <img src="./images/person-swimming-solid.svg" id="swimmer-1" class="swimmer" />
+          <img src="./images/person-swimming-solid.svg" id="swimmer-1" class="swimmer winner" />
         </div>
       </div>
       <div class="lane">
@@ -55,7 +55,7 @@
           PS Team
         </div>
         <div class="swim-lane">
-          <img src="./images/person-swimming-solid.svg" id="swimmer-4" class="swimmer" />
+          <img src="./images/person-swimming-solid.svg" id="swimmer-4" class="swimmer second-1" />
         </div>
       </div>
       <div class="lane">
@@ -64,7 +64,7 @@
           L&D Team
         </div>
         <div class="swim-lane">
-          <img src="./images/person-swimming-solid.svg" id="swimmer-5" class="swimmer" />
+          <img src="./images/person-swimming-solid.svg" id="swimmer-5" class="swimmer second-2" />
         </div>
       </div>
       <div class="lane">
@@ -95,7 +95,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="first-place-row">
           <td>QA Team</td>
           <td id="qaGoal"></td>
           <td id="qaActual"></td>
@@ -110,12 +110,12 @@
           <td id="productGoal"></td>
           <td id="productActual"></td>
         </tr>
-        <tr>
+        <tr class="second-place-row">
           <td>PS Team</td>
           <td id="psGoal"></td>
           <td id="psActual"></td>
         </tr>
-        <tr>
+        <tr class="second-place-row">
           <td>L&D Team</td>
           <td id="ldGoal"></td>
           <td id="ldActual"></td>
@@ -136,6 +136,14 @@
     <div id="3" class="hide">GO!</div>
   </div>
 
+  <div class="celebrate">
+    <img src="./images/carlton.gif" />
+    <div>
+      Congratulations<br>
+      QA Team!
+    </div>
+  </div>
+
   <audio id="song" src="./images/rocky_song.mp3" preload="auto"></audio>
 
   <script type="text/javascript">
@@ -148,12 +156,12 @@
     const ldGoal = 4;
     const devGoal = 120;
 
-    let qaActual = 83;
-    let csActual = 101;
-    let productActual = 6;
-    let psActual = 36;
-    let ldActual = 3;
-    let devActual = 94;
+    let qaActual = 91;
+    let csActual = 105;
+    let productActual = 7;
+    let psActual = 48;
+    let ldActual = 4;
+    let devActual = 100;
 
     function calculateDistance(goal, actual) {
       if (actual >= goal) {
@@ -186,6 +194,9 @@
       $('#psActual').html(psActual);
       $('#ldActual').html(ldActual);
       $('#devActual').html(devActual);
+
+      $('.first-place-row').css('backgroundColor', 'gold');
+      $('.second-place-row').css('backgroundColor', 'silver');
     }
 
     var racing = false;
@@ -200,7 +211,8 @@
             moveSwimmers();
             setTimeout(function() {
               populateScoreboard();
-            }, 62000);
+              celebrate();
+            }, 64000);
           }, 4000);
         }, 2000);
         
@@ -236,6 +248,14 @@
         }, 1000);
       }, (id * 1000));
     }
+
+    function celebrate() {
+      $('.celebrate').toggleClass('show');
+    }
+
+    $('.celebrate').click(function() {
+      celebrate();
+    });
 
     $(document).ready(function() {
       document.getElementById('song').volume = 0.1;
