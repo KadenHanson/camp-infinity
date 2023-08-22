@@ -1,0 +1,153 @@
+@font-face {
+  font-family: Lumberjack;
+  src: url('../fonts/Lumberjack.otf');
+}
+
+body {
+  font-family: Lumberjack;
+  color: white;
+  background-image: url(../images/campground-blurred.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-height: 100dvh;
+}
+
+.nav {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+}
+
+.team-container {
+  margin-top: 15px;
+  font-size: 30px;
+  padding: 0 20px;
+}
+
+.teams {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 100px;
+}
+
+.team {
+  display: flex;
+}
+
+.team img {
+  max-width: 140px;
+  cursor: pointer;
+  transition: transform 0.25s;
+}
+
+.team img:hover, .back-arrow a:hover {
+  transform: scale(1.2);
+}
+
+.back-arrow a {
+  font-size: 45px;
+  position: fixed;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.25s;
+  z-index: 1000;
+  position: absolute;
+}
+
+/* .roasters {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.roaster {
+  position: relative;
+  z-index: 1;
+  bottom: 0;
+  justify-self: flex-end;
+  margin: auto auto 253px auto;
+  display: flex;
+}
+
+.stick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.stick img {
+  width: 50px;
+}
+
+.marshmallow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  align-self: baseline;
+}
+
+.marshmallow img {
+  width: 50px;
+  position: absolute;
+} */
+
+.roasters {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.roaster {
+  position: relative;
+  z-index: 1;
+  bottom: 0;
+  /* justify-self: flex-end; */
+  margin: auto auto 0 auto;
+  display: flex;
+}
+
+.stick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.stick img {
+  /*width: 50px;*/
+}
+
+.marshmallow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* position: absolute; */
+  z-index: 3;
+  /* align-self: baseline; */
+  background-image: url(../images/stick-segmant.png);
+  background-repeat-x: no-repeat;
+  background-repeat-y: repeat;
+  background-position: center;
+  padding-bottom: 78px;
+}
+
+.marshmallow img {
+  width: 50px;
+  /* position: absolute; */
+  margin: 10px 0;
+}

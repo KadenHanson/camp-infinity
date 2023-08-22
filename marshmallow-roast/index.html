@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camp Infinity - Marshmallow Roast</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="nav">
+    <img src="./images/logo-filled-white.png" class="logo" />
+  </div>
+
+  <div class="team-container">
+    Please select the team you want to see!
+    <div class="teams">
+      <div class="team">
+        <a href="roast.html?team=qa">
+          <img src="./images/signs/qa-sign.png" team="qa" />
+        </a>
+      </div>
+      <div class="team">
+        <a href="roast.html?team=cs">
+          <img src="./images/signs/cs-sign.png" team="cs" />
+        </a>
+      </div>
+      <div class="team">
+        <a href="roast.html?team=product">
+          <img src="./images/signs/product-sign.png" team="product" />
+        </a>
+      </div>
+      <div class="team">
+        <a href="roast.html?team=ps">
+          <img src="./images/signs/ps-sign.png" team="ps" />
+        </a>
+      </div>
+      <div class="team">
+        <a href="roast.html?team=ld">
+          <img src="./images/signs/ld-sign.png" team="ld" />
+        </a>
+      </div>
+      <div class="team">
+        <a href="roast.html?team=dev">
+          <img src="./images/signs/dev-sign.png" team="dev" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const people = [
+      { name: 'Aminah Sagoe', team: 'PS', marshCount: 0 }, { name: 'Robe Dela Resma', team: 'CS', marshCount: 0 },
+      { name: 'Sebin Sebastian', team: 'Dev', marshCount: 0 }, { name: 'Prince Noble', team: 'CS', marshCount: 0 },
+      { name: 'Carmen Garcia', team: 'LD', marshCount: 0 }, { name: 'Jake Reidy', team: 'Product', marshCount: 0 },
+      { name: 'Christy Starrett', team: 'QA', marshCount: 0 }, { name: 'Jewel Iacovino', team: 'CS', marshCount: 0 },
+      { name: 'Stan Jones', team: 'Dev', marshCount: 0 }, { name: 'Mychi Giang', team: 'Product', marshCount: 0 },
+      { name: 'Maddie Wolf', team: 'Product', marshCount: 0 }, { name: 'Tutonda Diakanamua', team: 'CS', marshCount: 0 },
+      { name: 'Radi Alfaro', team: 'PS', marshCount: 0 }, { name: 'Amy Buccambuso', team: 'CS', marshCount: 0 },
+      { name: 'Carlis Kanneh', team: 'Product', marshCount: 0 }, { name: 'Precious Onyekwere', team: 'Dev', marshCount: 0 },
+      { name: 'Steven Rubio', team: 'Dev', marshCount: 0 }, { name: 'Bryan Morgan', team: 'Dev', marshCount: 0 },
+      { name: 'Brandon Lao', team: 'LD', marshCount: 0 }, { name: 'Brian Bustos', team: 'CS', marshCount: 0 },
+      { name: 'Walters Chin', team: 'Dev', marshCount: 0 }, { name: 'Kaden Hanson', team: 'Dev', marshCount: 0 },
+      { name: 'Jordan Sae', team: 'QA', marshCount: 0 }, { name: 'Paul Bellar', team: 'Dev', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
+    ];
+
+    people.forEach(p => {
+      console.log('Name: ' + p.name + ', Team: ' + p.team);
+    });
+
+    // Every 65 test written = 1 marshmallow
+    const qaGoal = 65;
+    // 10 Tickets interacted per day = 1 marshmallow
+    const csGoal = 10;
+    // New PBIs that were in "In Design" state for less than 5 days, 1 PBI = 1 marshmallow
+    const productGoal = 1;
+    // 6.5 hours billable time logged per day = 1 marshmallow
+    const psGoal = 6.5;
+    // 1 completed training module = 1 marshmallow
+    const ldGoal = 1;
+    // 4 hours logged per day = 1 marshmallow
+    const devGoal = 4;
+
+    $('.team img').click(function() {
+      $(this).attr('team');
+    });
+  </script>
+</body>
+
+</html>
