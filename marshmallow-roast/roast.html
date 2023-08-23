@@ -69,7 +69,7 @@
         currentTeam.forEach((p, i) => {
           var person = p;
           person.marshCount =
-            (Math.floor(Math.random() * 10) * goals[currentTeamName]) /
+            (Math.floor(Math.random() * 50) * goals[currentTeamName]) /
             goals[currentTeamName];
           currentTeam[i] = person;
         });
@@ -77,11 +77,11 @@
 
       function displaySticks() {
         currentTeam.forEach((p) => {
-          let element = '<div class="roaster"><div class="marshmallow">';
+          let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallow">';
           for (var x = 0; x <= p.marshCount; x++) {
-            element += '<img src="./images/marshmallow.png" />';
+            element += '<img src="./images/marshmallow-with-stick.png" />';
           }
-          element += '</div></div>';
+          element += '</div><span class="name-sign"><img src="./images/name-sign.png" /><span>' + p.name + '</span></span></div>';
           $(".roasters").append(element);
         });
       }

@@ -39,7 +39,7 @@ body {
 }
 
 .team img {
-  max-width: 140px;
+  max-width: 200px;
   cursor: pointer;
   transition: transform 0.25s;
 }
@@ -58,50 +58,6 @@ body {
   position: absolute;
 }
 
-/* .roasters {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  min-height: 100vh;
-}
-
-.roaster {
-  position: relative;
-  z-index: 1;
-  bottom: 0;
-  justify-self: flex-end;
-  margin: auto auto 253px auto;
-  display: flex;
-}
-
-.stick {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  z-index: 2;
-}
-
-.stick img {
-  width: 50px;
-}
-
-.marshmallow {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  z-index: 3;
-  align-self: baseline;
-}
-
-.marshmallow img {
-  width: 50px;
-  position: absolute;
-} */
-
 .roasters {
   position: relative;
   display: flex;
@@ -115,9 +71,9 @@ body {
   position: relative;
   z-index: 1;
   bottom: 0;
-  /* justify-self: flex-end; */
   margin: auto auto 0 auto;
   display: flex;
+  flex-direction: column;
 }
 
 .stick {
@@ -128,26 +84,45 @@ body {
   z-index: 2;
 }
 
-.stick img {
-  /*width: 50px;*/
-}
-
 .marshmallow {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* position: absolute; */
   z-index: 3;
-  /* align-self: baseline; */
-  background-image: url(../images/stick-segmant.png);
+  background-image: url(../images/stick-segmant-3.png);
   background-repeat-x: no-repeat;
   background-repeat-y: repeat;
   background-position: center;
   padding-bottom: 78px;
+  align-self: center;
 }
 
 .marshmallow img {
   width: 50px;
-  /* position: absolute; */
   margin: 10px 0;
+}
+
+.stick-top {
+  width: 19px;
+  height: 130px;
+  align-self: center;
+}
+
+.name-sign {
+  position: relative;
+}
+
+.name-sign img {
+  max-width: 175px;
+}
+
+.name-sign span {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 23px;
+  text-align: center;
+  color: #2D2419;
+  font-weight: bold;
 }
