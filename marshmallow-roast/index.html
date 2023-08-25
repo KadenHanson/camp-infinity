@@ -51,50 +51,6 @@
       </div>
     </div>
   </div>
-
-  <script type="text/javascript">
-    const people = [
-      { name: 'Aminah Sagoe', team: 'PS', marshCount: 0 }, { name: 'Robe Dela Resma', team: 'CS', marshCount: 0 },
-      { name: 'Sebin Sebastian', team: 'Dev', marshCount: 0 }, { name: 'Prince Noble', team: 'CS', marshCount: 0 },
-      { name: 'Carmen Garcia', team: 'LD', marshCount: 0 }, { name: 'Jake Reidy', team: 'Product', marshCount: 0 },
-      { name: 'Christy Starrett', team: 'QA', marshCount: 0 }, { name: 'Jewel Iacovino', team: 'CS', marshCount: 0 },
-      { name: 'Stan Jones', team: 'Dev', marshCount: 0 }, { name: 'Mychi Giang', team: 'Product', marshCount: 0 },
-      { name: 'Maddie Wolf', team: 'Product', marshCount: 0 }, { name: 'Tutonda Diakanamua', team: 'CS', marshCount: 0 },
-      { name: 'Radi Alfaro', team: 'PS', marshCount: 0 }, { name: 'Amy Buccambuso', team: 'CS', marshCount: 0 },
-      { name: 'Carlis Kanneh', team: 'Product', marshCount: 0 }, { name: 'Precious Onyekwere', team: 'Dev', marshCount: 0 },
-      { name: 'Steven Rubio', team: 'Dev', marshCount: 0 }, { name: 'Bryan Morgan', team: 'Dev', marshCount: 0 },
-      { name: 'Brandon Lao', team: 'LD', marshCount: 0 }, { name: 'Brian Bustos', team: 'CS', marshCount: 0 },
-      { name: 'Walters Chin', team: 'Dev', marshCount: 0 }, { name: 'Kaden Hanson', team: 'Dev', marshCount: 0 },
-      { name: 'Jordan Sae', team: 'QA', marshCount: 0 }, { name: 'Paul Bellar', team: 'Dev', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-      // { name: '', team: '', marshCount: 0 }, { name: '', team: '', marshCount: 0 },
-    ];
-
-    people.forEach(p => {
-      console.log('Name: ' + p.name + ', Team: ' + p.team);
-    });
-
-    // Every 65 test written = 1 marshmallow
-    const qaGoal = 65;
-    // 10 Tickets interacted per day = 1 marshmallow
-    const csGoal = 10;
-    // New PBIs that were in "In Design" state for less than 5 days, 1 PBI = 1 marshmallow
-    const productGoal = 1;
-    // 6.5 hours billable time logged per day = 1 marshmallow
-    const psGoal = 6.5;
-    // 1 completed training module = 1 marshmallow
-    const ldGoal = 1;
-    // 4 hours logged per day = 1 marshmallow
-    const devGoal = 4;
-
-    $('.team img').click(function() {
-      $(this).attr('team');
-    });
-  </script>
 </body>
 
 </html>

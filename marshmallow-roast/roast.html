@@ -1,95 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Camp Infinity - Marshmallow Roast</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <span class="back-arrow">
-      <a href="index.html">&#129092;</a>
-    </span>
 
-    <div class="roasters"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camp Infinity - Marshmallow Roast</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
 
-    <script type="text/javascript">
-      const people = [
-        { name: "Aminah Sagoe", team: "ps", marshCount: 0 },
-        { name: "Robe Dela Resma", team: "cs", marshCount: 0 },
-        { name: "Sebin Sebastian", team: "dev", marshCount: 0 },
-        { name: "Prince Noble", team: "cs", marshCount: 0 },
-        { name: "Carmen Garcia", team: "ld", marshCount: 0 },
-        { name: "Jake Reidy", team: "product", marshCount: 0 },
-        { name: "Christy Starrett", team: "qa", marshCount: 0 },
-        { name: "Jewel Iacovino", team: "cs", marshCount: 0 },
-        { name: "Stan Jones", team: "dev", marshCount: 0 },
-        { name: "Mychi Giang", team: "product", marshCount: 0 },
-        { name: "Maddie Wolf", team: "product", marshCount: 0 },
-        { name: "Tutonda Diakanamua", team: "cs", marshCount: 0 },
-        { name: "Radi Alfaro", team: "ps", marshCount: 0 },
-        { name: "Amy Buccambuso", team: "cs", marshCount: 0 },
-        { name: "Carlis Kanneh", team: "product", marshCount: 0 },
-        { name: "Precious Onyekwere", team: "dev", marshCount: 0 },
-        { name: "Steven Rubio", team: "dev", marshCount: 0 },
-        { name: "Bryan Morgan", team: "dev", marshCount: 0 },
-        { name: "Brandon Lao", team: "ld", marshCount: 0 },
-        { name: "Brian Bustos", team: "cs", marshCount: 0 },
-        { name: "Walters Chin", team: "dev", marshCount: 0 },
-        { name: "Kaden Hanson", team: "dev", marshCount: 0 },
-        { name: "Jordan Sae", team: "qa", marshCount: 0 },
-        { name: "Paul Bellar", team: "dev", marshCount: 0 },
-      ];
+<body>
+  <span class="back-arrow">
+    <a href="index.html">&#129092;</a>
+  </span>
 
-      const currentTeamName = window.location.href.split("=")[1];
-      let currentTeam = people.filter((p) => p.team == currentTeamName);
+  <div class="roasters"></div>
 
-      const goals = {
-        // Every 65 test written = 1 marshmallow
-        qa: 65,
-        // 10 Tickets interacted per day = 1 marshmallow
-        cs: 10,
-        // New PBIs that were in "In Design" state for less than 5 days, 1 PBI = 1 marshmallow
-        product: 1,
-        // 6.5 hours billable time logged per day = 1 marshmallow
-        ps: 6.5,
-        // 1 completed training module = 1 marshmallow
-        ld: 1,
-        // 4 hours logged per day = 1 marshmallow
-        dev: 4,
-      };
+  <script type="text/javascript">
+    const people = [
+      { name: "Aminah Sagoe", team: "ps", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Robe Dela Resma", team: "cs", marshCount: 4, bonusMarshCount: 1 },
+      { name: "Sebin Sebastian", team: "dev", marshCount: 0, bonusMarshCount: 1 },
+      { name: "Prince Noble", team: "cs", marshCount: 3, bonusMarshCount: 0 },
+      { name: "Carmen Garcia", team: "ld", marshCount: 4, bonusMarshCount: 1 },
+      { name: "Jake Reidy", team: "product", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Christy Starrett", team: "qa", marshCount: 33, bonusMarshCount: 1 },
+      { name: "Jewel Iacovino", team: "cs", marshCount: 7, bonusMarshCount: 1 },
+      { name: "Stan Jones", team: "dev", marshCount: 0, bonusMarshCount: 1 },
+      { name: "Mychi Giang", team: "product", marshCount: 3, bonusMarshCount: 0 },
+      { name: "Maddie Wolf", team: "product", marshCount: 2, bonusMarshCount: 1 },
+      { name: "Tutonda Diakanamua", team: "cs", marshCount: 5, bonusMarshCount: 1 },
+      { name: "Radi Alfaro", team: "ps", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Amy Buccambuso", team: "cs", marshCount: 5, bonusMarshCount: 1 },
+      { name: "Carlis Kanneh", team: "product", marshCount: 1, bonusMarshCount: 1 },
+      { name: "Precious Onyekwere", team: "dev", marshCount: 0, bonusMarshCount: 1 },
+      { name: "Steven Rubio", team: "dev", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Bryan Morgan", team: "dev", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Brandon Lao", team: "ld", marshCount: 4, bonusMarshCount: 2 },
+      { name: "Brian Bustos", team: "cs", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Walters Chin", team: "dev", marshCount: 0, bonusMarshCount: 0 },
+      { name: "Kaden Hanson", team: "dev", marshCount: 1, bonusMarshCount: 1 },
+      { name: "Jordan Sae", team: "qa", marshCount: 5, bonusMarshCount: 0 },
+      { name: "Paul Bellar", team: "dev", marshCount: 0, bonusMarshCount: 0 },
+    ];
 
-      function getTeamData() {
-        currentTeam.forEach((p, i) => {
-          var person = p;
-          person.marshCount =
-            (Math.floor(Math.random() * 50) * goals[currentTeamName]) /
-            goals[currentTeamName];
-          currentTeam[i] = person;
-        });
-      }
+    const currentTeamName = window.location.href.split("=")[1];
+    let currentTeam = people.filter((p) => p.team == currentTeamName);
 
-      function displaySticks() {
-        currentTeam.forEach((p) => {
-          let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallow">';
-          for (var x = 0; x <= p.marshCount; x++) {
-            element += '<img src="./images/marshmallow-with-stick.png" />';
-          }
-          element += '</div><span class="name-sign"><img src="./images/name-sign.png" /><span>' + p.name + '</span></span></div>';
-          $(".roasters").append(element);
-        });
-      }
+    const goals = {
+      // Every 65 test written = 1 marshmallow
+      qa: 65,
+      // 10 Tickets interacted per day = 1 marshmallow
+      cs: 10,
+      // New PBIs that were in "In Design" state for less than 5 days, 1 PBI = 1 marshmallow
+      product: 1,
+      // 6.5 hours billable time logged per day = 1 marshmallow
+      ps: 6.5,
+      // 1 completed training module = 1 marshmallow
+      ld: 1,
+      // 4 hours logged per day = 1 marshmallow
+      dev: 4,
+    };
 
-      $(document).ready(function () {
-        getTeamData();
-        displaySticks();
+    // function getTeamData() {
+    //   currentTeam.forEach((p, i) => {
+    //     var person = p;
+    //     person.marshCount =
+    //       (Math.floor(Math.random() * 50) * goals[currentTeamName]) /
+    //       goals[currentTeamName];
+    //     currentTeam[i] = person;
+    //   });
+    // }
+
+    function displaySticks() {
+      currentTeam.forEach((p) => {
+        let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallow">';
+        for (var x = 0; x < (p.marshCount + p.bonusMarshCount); x++) {
+          element += '<img src="./images/marshmallow-with-stick.png" />';
+        }
+        if (p.marshCount === 0 && p.bonusMarshCount === 0) {
+          element += '<div>&emsp;</div>'
+        }
+        element += '</div><span class="name-sign"><img src="./images/name-sign.png" /><span>' + p.name + '</span></span></div>';
+        $(".roasters").append(element);
       });
-    </script>
-  </body>
+    }
+
+    $(document).ready(function () {
+      displaySticks();
+      setTimeout(function() {
+        $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
+      }, 10);
+    });
+  </script>
+</body>
+
 </html>
