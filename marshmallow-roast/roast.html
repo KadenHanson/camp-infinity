@@ -20,7 +20,7 @@
 
   <script type="text/javascript">
     const people = [
-      { name: "Aminah Sagoe", team: "ps", marshCount: 0, bonusMarshCount: 0 },
+      // { name: "Aminah Sagoe", team: "ps", marshCount: 0, bonusMarshCount: 0 },
       { name: "Robe Dela Resma", team: "cs", marshCount: 4, bonusMarshCount: 1 },
       { name: "Sebin Sebastian", team: "dev", marshCount: 0, bonusMarshCount: 1 },
       { name: "Prince Noble", team: "cs", marshCount: 3, bonusMarshCount: 0 },
@@ -32,7 +32,7 @@
       { name: "Mychi Giang", team: "product", marshCount: 3, bonusMarshCount: 0 },
       { name: "Maddie Wolf", team: "product", marshCount: 2, bonusMarshCount: 1 },
       { name: "Tutonda Diakanamua", team: "cs", marshCount: 5, bonusMarshCount: 1 },
-      { name: "Radi Alfaro", team: "ps", marshCount: 0, bonusMarshCount: 0 },
+      // { name: "Radi Alfaro", team: "ps", marshCount: 0, bonusMarshCount: 0 },
       { name: "Amy Buccambuso", team: "cs", marshCount: 5, bonusMarshCount: 1 },
       { name: "Carlis Kanneh", team: "product", marshCount: 1, bonusMarshCount: 1 },
       { name: "Precious Onyekwere", team: "dev", marshCount: 0, bonusMarshCount: 1 },
@@ -76,9 +76,9 @@
 
     function displaySticks() {
       currentTeam.forEach((p) => {
-        let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallow">';
+        let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallows">';
         for (var x = 0; x < (p.marshCount + p.bonusMarshCount); x++) {
-          element += '<img src="./images/marshmallow-with-stick.png" />';
+          element += '<span class="marshmallow"><img src="./images/marshmallow-with-stick.png" class="mallow" /><img src="./images/flame.gif" class="flame" /></span>';
         }
         if (p.marshCount === 0 && p.bonusMarshCount === 0) {
           element += '<div>&emsp;</div>'
@@ -92,8 +92,39 @@
       displaySticks();
       setTimeout(function() {
         $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 0);
-      }, 10);
+      }, 100);
+
+      $('.marshmallow').click(function() {
+        var cookedState = '';
+        $(this).children('.flame').toggleClass('show');
+        if ($(this).children('.mallow').attr('cookcount') === undefined) {
+          $(this).children('.mallow').attr('cookcount', '1');
+          cookedState = 'cooked';
+        } else {
+          var cookcount = parseInt($(this).children('.mallow').attr('cookcount')) + 1;
+          $(this).children('.mallow').attr('cookcount', cookcount.toString());
+          switch(cookcount) {
+            case 2:
+              cookedState = 'more-cooked';
+              break;
+            case 3:
+              cookedState = 'burned';
+              break;
+            defalut:
+              cookedState = 'cooked';
+              break;
+          }
+        }
+        setTimeout(() => {
+          $(this).children('.mallow').attr('src', `./images/${cookedState}-marshmallow-with-stick.png`);
+        }, 500);
+        setTimeout(() => {
+          $(this).children('.flame').toggleClass('show');
+        }, 1000);
+      });
     });
+
+    
   </script>
 </body>
 

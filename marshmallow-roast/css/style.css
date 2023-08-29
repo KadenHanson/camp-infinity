@@ -21,6 +21,10 @@ body {
   width: 150px;
 }
 
+.homepage.hide, .roast.hide {
+  display: none;
+}
+
 .team-container {
   margin-top: 15px;
   font-size: 30px;
@@ -44,11 +48,11 @@ body {
   transition: transform 0.25s;
 }
 
-.team img:hover, .back-arrow a:hover {
+.team img:hover, .back-arrow span:hover {
   transform: scale(1.2);
 }
 
-.back-arrow a {
+.back-arrow span {
   font-size: 45px;
   position: fixed;
   color: white;
@@ -56,6 +60,7 @@ body {
   transition: transform 0.25s;
   z-index: 1000;
   position: absolute;
+  cursor: pointer;
 }
 
 .roasters {
@@ -84,7 +89,7 @@ body {
   z-index: 2;
 }
 
-.marshmallow {
+.marshmallows {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -97,9 +102,9 @@ body {
   align-self: center;
 }
 
-.marshmallow img {
+.marshmallows img {
   width: 50px;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .stick-top {
@@ -125,4 +130,24 @@ body {
   text-align: center;
   color: #2D2419;
   font-weight: bold;
+}
+
+.marshmallow {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.marshmallow .flame {
+  position: absolute;
+  width: 100px;
+  top: -40px;
+  display: none;
+  transition: display 0.3s;
+}
+
+.marshmallow .flame.show {
+  display: initial;
 }
