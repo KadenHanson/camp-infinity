@@ -151,3 +151,31 @@ body {
 .marshmallow .flame.show {
   display: initial;
 }
+
+.marshmallows .ribbon {
+  width: 100px;
+}
+
+span.marshmallow, .marshmallows .ribbon {
+  height: 0px;
+  transform: translateY(-350vh);
+  transition: transform 1s ease-out, height 2s;
+  transition-delay: var(--delay);
+}
+
+span.marshmallow.drop {
+  height: 64px;
+  transform: translateY(0);
+}
+
+.marshmallows .ribbon.drop {
+  height: 172px;
+  transform: translateY(0);
+}
+
+.checkBtn {
+  position: absolute;
+  left: 43%;
+  top: 50%;
+  width: 265px;
+}

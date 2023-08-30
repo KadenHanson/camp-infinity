@@ -55,6 +55,8 @@
     </span>
 
     <div class="roasters"></div>
+
+    <input type="image" src="./images/check-count-btn.png" class="checkBtn" onclick="showMarshmallows()" />
   </div>
 
   <audio id="song" src="./images/camping_song.mp3" preload="auto" autoplay></audio>
@@ -69,6 +71,7 @@
       $('.homepage').removeClass('hide');
       $('.roast').addClass('hide');
       $('.roasters').html('');
+      $('.checkBtn').show();
     });
 
     const people = [
@@ -104,11 +107,13 @@
     function displaySticks() {
       currentTeam.forEach((p) => {
         let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallows">';
-        for (var x = 0; x < (p.marshCount + p.bonusMarshCount); x++) {
-          element += '<span class="marshmallow"><img src="./images/marshmallow-with-stick.png" class="mallow" /><img src="./images/flame.gif" class="flame" /></span>';
+        const totalCount = (p.marshCount + p.bonusMarshCount);
+        for (var x = 0; x < totalCount; x++) {
+          element += `<span class="marshmallow" style="--delay: ${totalCount - x}s;"><img src="./images/marshmallow-with-stick.png" class="mallow" /><img src="./images/flame.gif" class="flame" /></span>`;
         }
         if (p.marshCount === 0 && p.bonusMarshCount === 0) {
-          element += '<div>&emsp;</div>'
+          // element += '<div>&emsp;</div>'
+          element += '<img src="./images/ribbon.png" class="ribbon" />'
         }
         element += '</div><span class="name-sign"><img src="./images/name-sign.png" /><span>' + p.name + '</span></span></div>';
         $(".roasters").append(element);
@@ -118,8 +123,10 @@
     function startRoast(chosenTeam) {
       $('.homepage').addClass('hide');
       $('.roast').removeClass('hide');
+
       currentTeamName = chosenTeam;
       currentTeam = people.filter((p) => p.team == currentTeamName);
+
       displaySticks();
       setTimeout(function () {
         $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 0);
@@ -127,12 +134,15 @@
 
       $('.marshmallow').click(function () {
         var cookedState = '';
+
         $(this).children('.flame').toggleClass('show');
+
         if ($(this).children('.mallow').attr('cookcount') === undefined) {
           $(this).children('.mallow').attr('cookcount', '1');
           cookedState = 'cooked';
         } else {
           var cookcount = parseInt($(this).children('.mallow').attr('cookcount')) + 1;
+
           $(this).children('.mallow').attr('cookcount', cookcount.toString());
           switch (cookcount) {
             case 1:
@@ -149,13 +159,20 @@
               break;
           }
         }
+
         setTimeout(() => {
           $(this).children('.mallow').attr('src', `./images/${cookedState}-marshmallow-with-stick.png`);
         }, 500);
+
         setTimeout(() => {
           $(this).children('.flame').toggleClass('show');
         }, 1000);
       });
+    }
+
+    function showMarshmallows() {
+      $('.marshmallow, .ribbon').addClass('drop');
+      $('.checkBtn').hide();
     }
   </script>
 </body>
