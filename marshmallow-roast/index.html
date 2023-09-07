@@ -103,11 +103,13 @@
 
     let currentTeamName;
     let currentTeam;
+    let winningCount;
 
     function displaySticks() {
+      winningCount = determineWinningCount();
       currentTeam.forEach((p) => {
-        let element = '<div class="roaster"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallows">';
         const totalCount = (p.marshCount + p.bonusMarshCount);
+        let element = `<div class="roaster${totalCount === winningCount ? ' winner' : ''}"><img src="./images/stick-top-2.png" class="stick-top" /><div class="marshmallows">`;
         for (var x = 0; x < totalCount; x++) {
           element += `<span class="marshmallow" style="--delay: ${totalCount - x}s;"><img src="./images/marshmallow-with-stick.png" class="mallow" /><img src="./images/flame.gif" class="flame" /></span>`;
         }
@@ -118,6 +120,16 @@
         element += '</div><span class="name-sign"><img src="./images/name-sign.png" /><span>' + p.name + '</span></span></div>';
         $(".roasters").append(element);
       });
+    }
+
+    function determineWinningCount() {
+      let count = 0;
+      currentTeam.forEach((p) => {
+        if ((p.marshCount + p.bonusMarshCount) > count) {
+          count = (p.marshCount + p.bonusMarshCount);
+        }
+      });
+      return count;
     }
 
     function startRoast(chosenTeam) {
@@ -173,6 +185,14 @@
     function showMarshmallows() {
       $('.marshmallow, .ribbon').addClass('drop');
       $('.checkBtn').hide();
+      setTimeout(function() {
+        showWinners();
+      }, ((winningCount * 1000) + 4000));
+    }
+
+    function showWinners() {
+      $('.roaster:not(.winner) .mallow').attr('cookcount', '3').click();
+      $('.roaster.winner .mallow').click();
     }
   </script>
 </body>
