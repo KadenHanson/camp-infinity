@@ -1,0 +1,61 @@
+@font-face {
+  font-family: Lumberjack;
+  src: url('../fonts/Lumberjack.otf');
+}
+
+body {
+  font-family: Lumberjack;
+}
+
+.nav {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+}
+
+.map-container {
+  width: 100%;
+  margin: 30px auto;
+  position: relative;
+}
+
+.map {
+  width: 1495px;
+  height: 896px;
+}
+
+#hiker {
+  offset-path: url(#trailpath);
+  animation: move 30000ms ease-in-out;
+  width: 80px;
+  height: 80px;
+  transform-box: fill-box;
+  position: absolute;
+  offset-rotate: auto;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  60% {
+    offset-rotate: auto;
+    transform: scaleX(1);
+  }
+  61% {
+    offset-rotate: 180deg auto;
+    transform: scaleX(-1);
+  }
+  100% {
+    offset-distance: 100%;
+    offset-rotate: 0deg;
+    transform: scaleX(-1);
+  }
+}
+
+#path-svg {
+  position: absolute;
+}
