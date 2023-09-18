@@ -26,14 +26,19 @@ body {
   height: 896px;
 }
 
-#hiker {
+.hikers .hiker {
   offset-path: url(#trailpath);
-  animation: move 30000ms ease-in-out;
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height: 125px;
   transform-box: fill-box;
   position: absolute;
   offset-rotate: auto;
+  animation-fill-mode: forwards;
+  content: initial;
+}
+
+.hikers .hiker.move {
+  animation: move 30000ms ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -43,19 +48,20 @@ body {
   }
   60% {
     offset-rotate: auto;
-    transform: scaleX(1);
+    content: initial;
   }
   61% {
-    offset-rotate: 180deg auto;
-    transform: scaleX(-1);
+    offset-rotate: var(--shouldReverse);
+    content: var(--flipUrl);
   }
   100% {
-    offset-distance: 100%;
-    offset-rotate: 0deg;
-    transform: scaleX(-1);
+    offset-distance: var(--distance);
+    offset-rotate: var(--finishRotation);
+    content: var(--flipUrl);
   }
 }
 
 #path-svg {
   position: absolute;
+  /* display: none; */
 }
