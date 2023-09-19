@@ -37,10 +37,11 @@ body {
   offset-rotate: auto;
   animation-fill-mode: forwards;
   content: initial;
+  transition: offset-rotate 0.25s linear;
 }
 
 .hikers .hiker.move {
-  animation: move 30000ms ease-in-out;
+  animation: var(--animationInfo);
   animation-fill-mode: forwards;
 }
 
@@ -48,22 +49,16 @@ body {
   0% {
     offset-distance: 0%;
   }
-  60% {
-    offset-rotate: auto;
-    content: initial;
-  }
-  61% {
-    offset-rotate: var(--shouldReverse);
-    content: var(--flipUrl);
-  }
   100% {
     offset-distance: var(--distance);
-    offset-rotate: var(--finishRotation);
-    content: var(--flipUrl);
   }
 }
 
 #path-svg {
   position: absolute;
-  /* display: none; */
+}
+
+.hikers .hiker.flip {
+  offset-rotate: 180deg auto;
+  content: var(--flipUrl);
 }
