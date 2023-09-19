@@ -20,6 +20,7 @@ body {
   margin: 30px auto;
   position: relative;
   text-align: center;
+  z-index: 1;
 }
 
 .map {
@@ -56,9 +57,14 @@ body {
 
 #path-svg {
   position: absolute;
+  z-index: -1;
 }
 
 .hikers .hiker.flip {
   offset-rotate: 180deg auto;
   content: var(--flipUrl);
+}
+
+.hikers .hiker:hover {
+  opacity: 0.2;
 }
