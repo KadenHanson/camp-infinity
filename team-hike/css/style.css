@@ -27,6 +27,8 @@ body {
   width: 1495px;
   height: 896px;
   margin: auto;
+  border: 3px solid #673810;
+  border-radius: 5px;
 }
 
 .hikers .hiker {
@@ -67,4 +69,18 @@ body {
 
 .hikers .hiker:hover {
   opacity: 0.2;
+}
+
+.hikers .hiker.rewind {
+  animation: rewind 3000ms linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rewind {
+  0% {
+    offset-distance: var(--distance);
+  }
+  100% {
+    offset-distance: 0%;
+  }
 }

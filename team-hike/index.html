@@ -17,9 +17,7 @@
   </div>
 
   <div class="map-container">
-    <span class="hikers">
-
-    </span>
+    <span class="hikers"></span>
     <svg xmlns="http://www.w3.org/2000/svg" width="1495" height="896" viewBox="0 0 1495 896" id="path-svg">
       <path fill="none" stroke="none" stroke-width="1" id="trailpath"
         d="M43.5,439.5c0,0,55.5,-0.5,93.5,-16.5c114,-48,152.5,-72,235,-69c2.2,-0.73,79.5,3,153,39c32.03,15.64,72,37,105,67c40,35,67,43,67,43c0,0,37.54,23.25,77,8.5c46.25,-17.29,99,-79.5,99,-79.5c0,0,29.59,-54.81,30,-94.5c0.33,-32.29,-28.5,-51,-28.5,-51c0,0,-16.5,-25.5,-135,-24c-47.4,-14.44,-57,-34.5,-57,-34.5c0,0,2.5,-30.39,25.5,-54c31.8,-32.65,87,-61.5,87,-61.5c0,0,19.49,24.81,37,45.5c15.35,18.14,29,32.5,29,32.5c0,0,102,-64.5,192,-54c102,-4.5,190.5,55.5,190.5,55.5c0,0,96.27,59.88,117,153c37.5,120,-30,256.5,-30,256.5c0,0,-44.15,64.06,-111,106.5c-66.65,42.31,-106.5,42,-159.5,59c0,0,-96.52,17.93,-185.5,19c-97.39,1.17,-184.5,-10.5,-184.5,-10.5" />
@@ -60,6 +58,12 @@
     function checkProgress() {
       teams.forEach((team, i) => {
         const distance = parseFloat($(`#hiker-${i + 1}`).css('offset-distance'));
+        if (distance > 33 && distance < 42) {
+          $(`#hiker-${i + 1}`).addClass('flip');
+        }
+        if (distance > 42 && distance < 68) {
+          $(`#hiker-${i + 1}`).removeClass('flip');
+        }
         if (distance > 68) {
           $(`#hiker-${i + 1}`).addClass('flip');
         }
@@ -68,12 +72,20 @@
 
     $('body').click(() => {
       if (!done) {
-        $('.hiker').addClass('move');
+        $('.hiker').addClass('move').removeClass('rewind');
         const progressInterval = setInterval(checkProgress, 100);
         setTimeout(() => {
           clearInterval(progressInterval);
           done = true;
         }, 31000);
+      }
+
+      if (done) {
+        $('.hiker').removeClass('flip').addClass('rewind');
+        setTimeout(() => {
+          done = false;
+          $('.hiker').removeClass('move rewind');
+        }, 4000);
       }
     });
   </script>
