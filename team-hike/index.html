@@ -26,18 +26,18 @@
   </div>
 
   <script type="text/javascript">
+    const animationLength = 20000;
     let done = false;
     let teams = [
-      { name: 'qa', goal: 30, complete: 0 },
-      { name: 'cs', goal: 180, complete: 0 },
-      { name: 'prod', goal: 20, complete: 0 },
-      { name: 'ps', goal: 95, complete: 0 },
-      { name: 'dev', goal: 420, complete: 0 }
+      { name: 'qa', goal: 30, complete: 5 },
+      { name: 'cs', goal: 180, complete: 25 },
+      { name: 'prod', goal: 20, complete: 8 },
+      { name: 'ps', goal: 95, complete: 6 },
+      { name: 'dev', goal: 420, complete: 71.3 }
     ];
 
     teams.forEach((team, i) => {
       const animationInfo = getAnimationInfo();
-      team.complete = Math.round(Math.random() * team.goal);
       const progress = determineProgress(team.goal, team.complete);
       $('.hikers').append(`<img id="hiker-${i + 1}" class="hiker" src="./images/${team.name}-hiker.png" style="--distance: ${progress}%; --animationInfo: ${animationInfo}; --flipUrl: url(../images/${team.name}-hiker-reverse.png);" />`);
     });
@@ -52,7 +52,7 @@
       const R3 = ((Math.random() * 0.899) + 0.100).toFixed(3);
       const R4 = (Math.random() + 0.4).toFixed(3);
 
-      return `move 30000ms cubic-bezier(${R1},${R2},${R3},${R4 > 1 ? (R4 - 1) : R4})`;
+      return `move ${animationLength}ms cubic-bezier(${R1},${R2},${R3},${R4 > 1 ? (R4 - 1) : R4})`;
     }
 
     function checkProgress() {
@@ -77,7 +77,7 @@
         setTimeout(() => {
           clearInterval(progressInterval);
           done = true;
-        }, 31000);
+        }, (animationLength + 1000));
       }
 
       if (done) {
