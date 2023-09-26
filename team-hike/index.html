@@ -1,94 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camp Infinity - Team Hike</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Camp Infinity - Team Hike</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-</head>
+  <body>
+    <div class="nav">
+      <img src="./images/logo-filled.png" class="logo" />
+    </div>
 
-<body>
-  <div class="nav">
-    <img src="./images/logo-filled.png" class="logo" />
-  </div>
+    <div class="map-container">
+      <span class="hikers"></span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1495"
+        height="896"
+        viewBox="0 0 1495 896"
+        id="path-svg"
+      >
+        <path
+          fill="none"
+          stroke="none"
+          stroke-width="1"
+          id="trailpath"
+          d="M43.5,439.5c0,0,55.5,-0.5,93.5,-16.5c114,-48,152.5,-72,235,-69c2.2,-0.73,79.5,3,153,39c32.03,15.64,72,37,105,67c40,35,67,43,67,43c0,0,37.54,23.25,77,8.5c46.25,-17.29,99,-79.5,99,-79.5c0,0,29.59,-54.81,30,-94.5c0.33,-32.29,-28.5,-51,-28.5,-51c0,0,-16.5,-25.5,-135,-24c-47.4,-14.44,-57,-34.5,-57,-34.5c0,0,2.5,-30.39,25.5,-54c31.8,-32.65,87,-61.5,87,-61.5c0,0,19.49,24.81,37,45.5c15.35,18.14,29,32.5,29,32.5c0,0,102,-64.5,192,-54c102,-4.5,190.5,55.5,190.5,55.5c0,0,96.27,59.88,117,153c37.5,120,-30,256.5,-30,256.5c0,0,-44.15,64.06,-111,106.5c-66.65,42.31,-106.5,42,-159.5,59c0,0,-96.52,17.93,-185.5,19c-97.39,1.17,-184.5,-10.5,-184.5,-10.5"
+        />
+      </svg>
+      <img src="./images/trail-map-cropped.png" class="map" />
+    </div>
 
-  <div class="map-container">
-    <span class="hikers"></span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="1495" height="896" viewBox="0 0 1495 896" id="path-svg">
-      <path fill="none" stroke="none" stroke-width="1" id="trailpath"
-        d="M43.5,439.5c0,0,55.5,-0.5,93.5,-16.5c114,-48,152.5,-72,235,-69c2.2,-0.73,79.5,3,153,39c32.03,15.64,72,37,105,67c40,35,67,43,67,43c0,0,37.54,23.25,77,8.5c46.25,-17.29,99,-79.5,99,-79.5c0,0,29.59,-54.81,30,-94.5c0.33,-32.29,-28.5,-51,-28.5,-51c0,0,-16.5,-25.5,-135,-24c-47.4,-14.44,-57,-34.5,-57,-34.5c0,0,2.5,-30.39,25.5,-54c31.8,-32.65,87,-61.5,87,-61.5c0,0,19.49,24.81,37,45.5c15.35,18.14,29,32.5,29,32.5c0,0,102,-64.5,192,-54c102,-4.5,190.5,55.5,190.5,55.5c0,0,96.27,59.88,117,153c37.5,120,-30,256.5,-30,256.5c0,0,-44.15,64.06,-111,106.5c-66.65,42.31,-106.5,42,-159.5,59c0,0,-96.52,17.93,-185.5,19c-97.39,1.17,-184.5,-10.5,-184.5,-10.5" />
-    </svg>
-    <img src="./images/trail-map-cropped.png" class="map" />
-  </div>
+    <script type="text/javascript">
+      const animationLength = 20000;
+      let done = false;
+      let teams = [
+        { name: "qa", goal: 30, complete: 5 },
+        { name: "cs", goal: 180, complete: 55 },
+        { name: "prod", goal: 20, complete: 11 },
+        { name: "ps", goal: 95, complete: 31 },
+        { name: "dev", goal: 420, complete: 109.75 },
+      ];
 
-  <script type="text/javascript">
-    const animationLength = 20000;
-    let done = false;
-    let teams = [
-      { name: 'qa', goal: 30, complete: 5 },
-      { name: 'cs', goal: 180, complete: 45 },
-      { name: 'prod', goal: 20, complete: 11 },
-      { name: 'ps', goal: 95, complete: 27 },
-      { name: 'dev', goal: 420, complete: 109.75 }
-    ];
-
-    teams.forEach((team, i) => {
-      const animationInfo = getAnimationInfo();
-      const progress = determineProgress(team.goal, team.complete);
-      $('.hikers').append(`<img id="hiker-${i + 1}" class="hiker" src="./images/${team.name}-hiker.png" style="--distance: ${progress}%; --animationInfo: ${animationInfo}; --flipUrl: url(../images/${team.name}-hiker-reverse.png);" />`);
-    });
-
-    function determineProgress(goal, complete) {
-      return (complete / goal) * 100;
-    }
-
-    function getAnimationInfo() {
-      const R1 = ((Math.random() * 0.699) + 0.300).toFixed(3);
-      const R2 = ((Math.random() * 0.899) + 0.100).toFixed(3);
-      const R3 = ((Math.random() * 0.899) + 0.100).toFixed(3);
-      const R4 = (Math.random() + 0.4).toFixed(3);
-
-      return `move ${animationLength}ms cubic-bezier(${R1},${R2},${R3},${R4 > 1 ? (R4 - 1) : R4})`;
-    }
-
-    function checkProgress() {
       teams.forEach((team, i) => {
-        const distance = parseFloat($(`#hiker-${i + 1}`).css('offset-distance'));
-        if (distance > 33 && distance < 42) {
-          $(`#hiker-${i + 1}`).addClass('flip');
-        }
-        if (distance > 42 && distance < 68) {
-          $(`#hiker-${i + 1}`).removeClass('flip');
-        }
-        if (distance > 68) {
-          $(`#hiker-${i + 1}`).addClass('flip');
+        const animationInfo = getAnimationInfo();
+        const progress = determineProgress(team.goal, team.complete);
+        $(".hikers").append(
+          `<img id="hiker-${i + 1}" class="hiker" src="./images/${team.name}-hiker.png" style="--distance: ${progress}%; --animationInfo: ${animationInfo}; --flipUrl: url(../images/${team.name}-hiker-reverse.png);" />`
+        );
+      });
+
+      function determineProgress(goal, complete) {
+        return (complete / goal) * 100;
+      }
+
+      function getAnimationInfo() {
+        const R1 = (Math.random() * 0.699 + 0.3).toFixed(3);
+        const R2 = (Math.random() * 0.899 + 0.1).toFixed(3);
+        const R3 = (Math.random() * 0.899 + 0.1).toFixed(3);
+        const R4 = (Math.random() + 0.4).toFixed(3);
+
+        return `move ${animationLength}ms cubic-bezier(${R1},${R2},${R3},${
+          R4 > 1 ? R4 - 1 : R4
+        })`;
+      }
+
+      function checkProgress() {
+        teams.forEach((team, i) => {
+          const distance = parseFloat(
+            $(`#hiker-${i + 1}`).css("offset-distance")
+          );
+          if (distance > 33 && distance < 42) {
+            $(`#hiker-${i + 1}`).addClass("flip");
+          }
+          if (distance > 42 && distance < 68) {
+            $(`#hiker-${i + 1}`).removeClass("flip");
+          }
+          if (distance > 68) {
+            $(`#hiker-${i + 1}`).addClass("flip");
+          }
+        });
+      }
+
+      $("body").click(() => moveHikers());
+      $(document).on("keypress", function (e) {
+        e.preventDefault();
+        if (e.which == 32) {
+          moveHikers();
         }
       });
-    }
 
-    $('body').click(() => {
-      if (!done) {
-        $('.hiker').addClass('move').removeClass('rewind');
-        const progressInterval = setInterval(checkProgress, 100);
-        setTimeout(() => {
-          clearInterval(progressInterval);
-          done = true;
-        }, (animationLength + 1000));
+      function moveHikers() {
+        if (!done) {
+          $(".hiker").addClass("move").removeClass("rewind");
+          const progressInterval = setInterval(checkProgress, 100);
+          setTimeout(() => {
+            clearInterval(progressInterval);
+            done = true;
+          }, animationLength + 100);
+        }
+
+        if (done) {
+          $(".hiker").removeClass("flip").addClass("rewind");
+          setTimeout(() => {
+            done = false;
+            $(".hiker").removeClass("move rewind");
+          }, 3100);
+        }
       }
-
-      if (done) {
-        $('.hiker').removeClass('flip').addClass('rewind');
-        setTimeout(() => {
-          done = false;
-          $('.hiker').removeClass('move rewind');
-        }, 4000);
-      }
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
