@@ -95,8 +95,7 @@ body {
   justify-content: center;
   z-index: 3;
   background-image: url(../images/stick-segmant-3.png);
-  background-repeat-x: no-repeat;
-  background-repeat-y: repeat;
+  background-repeat: no-repeat repeat;
   background-position: center;
   padding-bottom: 78px;
   align-self: center;
